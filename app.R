@@ -59,7 +59,7 @@ make_prediction_map <- function(dat, sea_mask) {
 # UI
 # -----------------------------
 ui <- fluidPage(
-  titlePanel("UK predicted resistant count (tile map)"),
+  titlePanel("UK predicted resistant Aspergillus fumigatus count"),
   
   sidebarLayout(
     sidebarPanel(
@@ -101,7 +101,7 @@ ui <- fluidPage(
           value = min(avail_dates),
           timeFormat = "%Y-%m-%d",
           width = "100%",
-          animate = animationOptions(interval = 500, loop = TRUE)
+          animate = animationOptions(interval = 1000, loop = TRUE)
         )
       ),
       
@@ -114,9 +114,7 @@ ui <- fluidPage(
 # Server
 # -----------------------------
 server <- function(input, output, session) {
-  
-
-  epred_filtered <- reactive({
+    epred_filtered <- reactive({
     req(input$sel_date, input$Landcover, input$SiteType)
     
     dat <- epred_grid %>%
@@ -142,17 +140,6 @@ server <- function(input, output, session) {
     dat
   })
   
-  output$debug <- renderPrint({
-    dat <- epred_filtered()
-    list(
-      selected_date = input$sel_date,
-      n_rows = nrow(dat),
-      landcover_selected = input$Landcover,
-      site_type_selected = input$SiteType,
-      names_dat = names(dat),
-      range_pred = if (nrow(dat)) range(dat$`Predicted Resistant Count`, na.rm = TRUE) else NA
-    )
-  })
   
   output$pred_map <- renderPlot({
     dat <- epred_filtered()

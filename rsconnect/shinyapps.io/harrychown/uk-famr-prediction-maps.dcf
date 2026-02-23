@@ -1,0 +1,10 @@
+name: uk-famr-prediction-maps
+title:
+username: harrychown
+account: harrychown
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 16741469
+bundleId: 11619122
+url: https://harrychown.shinyapps.io/uk-famr-prediction-maps/
+version: 1

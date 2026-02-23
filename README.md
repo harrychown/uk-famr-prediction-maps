@@ -1,2 +1,2 @@
-# 5-uk-famr-prediction-maps
+# uk-famr-prediction-maps
 Spatio-temporal Bayesian predictions of Aspergillus fumigatus resistance in the UK

@@ -41,7 +41,8 @@ make_prediction_map <- function(dat, sea_mask) {
     geom_tile(aes(Longitude, Latitude), color = "black") +
     geom_sf(data = sea_mask, fill = "white") +
     coord_sf(xlim = c(-8, 2), ylim = c(49, 60)) +
-    scale_fill_viridis_c(
+    scale_fill_viridis(
+      option = "magma"
       trans  = "log10",
       limits = c(10, 10000),
       oob    = scales::squish,
